@@ -51,7 +51,15 @@ yarn add teaset    不维护了已经，很多报错
 
 
 
+埋坑：
 
+```
+    console.log(ReactDOM.render(<Dialog.Loading />, document.getElementById('root')))
+    import {Input, Icon, Dialog} from '@rneui/themed';
+    <Dialog isVisible={visibleDialogLoading} onBackdropPress={() => this.toggleDialogLoading()}>
+        <Dialog.Loading />
+    </Dialog>
+```
 
 
 

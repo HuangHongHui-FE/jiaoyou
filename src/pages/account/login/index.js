@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import {
   View,
   Button,
@@ -17,18 +18,18 @@ import {Input, Icon, Dialog} from '@rneui/themed';
 // import {Toast} from '../../../utils/Toast.js'
 import request from '../../../utils/request';
 import {ACCOUNT_LOGIN} from '../../../utils/pathMap';
+
+import THButton from '../../../components/THButton';
 class Index extends Component {
   constructor() {
     super();
-    // Toast.showLoading('aaa');
-    // Dialog.Loading('aa', 100000);
-    console.log(Dialog.Loading('aaa'))
   }
+
   state = {
     phoneNumber: '15538920602',
     // 手机号码是否合法
     phoneValid: true,
-    visibleDialogLoading: true
+    visibleDialogLoading: true,
   };
 
   phoneNumberChangeText(phoneNumber) {
@@ -38,10 +39,10 @@ class Index extends Component {
     });
   }
 
-  toggleDialogLoading(){
+  toggleDialogLoading() {
     this.setState({
-      visibleDialogLoading: !this.state.visibleDialogLoading
-    })
+      visibleDialogLoading: !this.state.visibleDialogLoading,
+    });
   }
   async phoneNumberSubmitEditing() {
     // 手机号码点击完成
@@ -59,7 +60,11 @@ class Index extends Component {
     console.log(res);
   }
 
+  // 点击获取验证码按钮
+  handleGetVcode() {}
+
   render() {
+    // <Dialog.Loading />
     const {phoneNumber, phoneValid, visibleDialogLoading} = this.state;
     // console.log(Dimensions.get("window").height)
     return (
@@ -107,9 +112,14 @@ class Index extends Component {
           </View>
         </View>
 
-        <Dialog isVisible={visibleDialogLoading} onBackdropPress={() => this.toggleDialogLoading()}>
-          <Dialog.Loading />
-        </Dialog>
+        {/* 渐变按钮 */}
+        <View>
+          <THButton
+            style={{width: '100%', height: pxToDp(40), justifyContent: "center", alignItems: "center"}}
+            onPress={() => this.handleGetVcode()}>
+            获取验证码
+          </THButton>
+        </View>
       </View>
     );
   }
