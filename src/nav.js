@@ -4,7 +4,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Login from './pages/account/login'
+// Demo文件-验证码输入组件
+import Demo01 from './pages/account/Demo-01'
 
+import UserInfo from './pages/account/userinfo'
 function HomeScreen({navigation}) {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -42,6 +45,8 @@ function Nav() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Demo01" component={Demo01} />
+        <Stack.Screen name="UserInfo" component={UserInfo} />
       </Stack.Navigator>
     </NavigationContainer>
   );

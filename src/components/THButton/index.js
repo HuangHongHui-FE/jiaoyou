@@ -5,11 +5,12 @@ import { pxToDp } from '../../utils/stylesKits';
 export default class Index extends React.Component {
   static defaultProps={
     style: {},
-    textStyle: {}
+    textStyle: {},
+    disabled: false
   }
   render() {
     return (
-      <TouchableOpacity style={{width: "100%", height: "100%", ...this.props.style}} onPress={this.props.onPress}>
+      <TouchableOpacity disabled={this.props.disabled} style={{width: "100%", height: "100%", ...this.props.style}} onPress={this.props.onPress}>
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
