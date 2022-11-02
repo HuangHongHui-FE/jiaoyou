@@ -1,5 +1,6 @@
 ## react-native交友项目
 
+
 安装react-native的cli
 
 npm i -g react-native-cli
@@ -11,6 +12,10 @@ npm root -g
 手机投屏里alt+M查看全部操作；
 debug可以看见浏览器输出
 
+遇到离谱的错误就
+```js
+npx react-native run-android  || npm run android
+```
 ### 项目创建
 
 ```js
@@ -49,18 +54,11 @@ https://github.com/rilyu/teaset/blob/master/docs/cn/README.md
 yarn add teaset    不维护了已经，很多报错
 ```
 
+#### 渐变的react-native-linear-gradient
+https://github.com/react-native-linear-gradient/react-native-linear-gradient
 
-
-埋坑：
-
-```
-    console.log(ReactDOM.render(<Dialog.Loading />, document.getElementById('root')))
-    import {Input, Icon, Dialog} from '@rneui/themed';
-    <Dialog isVisible={visibleDialogLoading} onBackdropPress={() => this.toggleDialogLoading()}>
-        <Dialog.Loading />
-    </Dialog>
-```
-
+#### 填写验证码的react-native-confirmation-code-field
+https://www.npmjs.com/package/react-native-confirmation-code-field
 
 
 ## error
@@ -68,3 +66,9 @@ yarn add teaset    不维护了已经，很多报错
 TypeError: Restricted in strict mode, js engine: hermes
 解决：axios版本降级，1.X及以上的都不可以，0.27.2可以
 ```
+
+
+
+### 需要补充
+add
+开
