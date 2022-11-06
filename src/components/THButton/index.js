@@ -1,3 +1,4 @@
+// LinearGradient渐进颜色按钮
 import React from 'react';
 import {Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
