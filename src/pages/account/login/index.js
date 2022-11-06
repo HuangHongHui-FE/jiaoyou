@@ -22,10 +22,8 @@ import {ACCOUNT_LOGIN, ACCOUNT_VALIDATEVCODE} from '../../../utils/pathMap';
 import THButton from '../../../components/THButton';
 
 // 验证码输入组件
-import {CodeField, Cursor} from 'react-native-confirmation-code-field';
+import Vcode from '../../../components/Vcode';
 
-// 输入验证码组件的style
-import styles from './styles';
 class Index extends Component {
   constructor() {
     super();
@@ -109,9 +107,9 @@ class Index extends Component {
     const res = {
       code: '10000',
       data: {
-        isNew: true
-      }
-    }
+        isNew: true,
+      },
+    };
 
     if (res.code != '10000') {
       return;
@@ -119,9 +117,9 @@ class Index extends Component {
 
     // 新用户
     if (res.data.isNew) {
-      this.props.navigation.navigate('UserInfo');  // 跳转到用户信息
+      this.props.navigation.navigate('UserInfo'); // 跳转到用户信息
     } else {
-      Alert('老用户')
+      Alert('老用户');
     }
   }
 
@@ -237,21 +235,10 @@ class Index extends Component {
 
         {/* 验证码输入组件Demo1 */}
         <View>
-          <CodeField
+          <Vcode
             value={vcodeText}
             onChangeText={value => this.setvcodeText(value)}
-            onSubmitEditing={() => this.onVcodeSubmitEditing()}
-            cellCount={6} // 单元格数量
-            rootStyle={styles.codeFieldRoot}
-            keyboardType="number-pad"
-            renderCell={({index, symbol, isFocused}) => (
-              <Text
-                key={index}
-                style={[styles.cell, isFocused && styles.focusCell]}>
-                {symbol || (isFocused ? <Cursor /> : null)}
-              </Text>
-            )}
-          />
+            onSubmitEditing={() => this.onVcodeSubmitEditing()}></Vcode>
         </View>
 
         <THButton

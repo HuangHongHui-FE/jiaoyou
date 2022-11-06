@@ -77,6 +77,18 @@ svg可以在阿里矢量图标库里，选择好图标 --> 到购物车里 --> �
 
 react-native-community/datetimepicker
 
+https://www.npmjs.com/package/@react-native-community/datetimepicker
+
+#### 地图定位
+
+react-native-amap-geolocation
+
+
+
+
+
+
+
 
 
 
