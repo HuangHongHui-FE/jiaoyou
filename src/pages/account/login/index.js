@@ -119,7 +119,7 @@ class Index extends Component {
 
     // 新用户
     if (res.data.isNew) {
-      this.props.navigation.navigate('UserInfo')
+      this.props.navigation.navigate('UserInfo');  // 跳转到用户信息
     } else {
       Alert('老用户')
     }

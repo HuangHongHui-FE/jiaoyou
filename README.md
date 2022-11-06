@@ -12,10 +12,7 @@ npm root -g
 手机投屏里alt+M查看全部操作；
 debug可以看见浏览器输出
 
-遇到离谱的错误就
-```js
-npx react-native run-android  || npm run android
-```
+
 ### 项目创建
 
 ```js
@@ -54,11 +51,35 @@ https://github.com/rilyu/teaset/blob/master/docs/cn/README.md
 yarn add teaset    不维护了已经，很多报错
 ```
 
-#### 渐变的react-native-linear-gradient
+#### 渐变的
+
+react-native-linear-gradient
+
 https://github.com/react-native-linear-gradient/react-native-linear-gradient
 
-#### 填写验证码的react-native-confirmation-code-field
+#### 填写验证码
+
+react-native-confirmation-code-field
+
 https://www.npmjs.com/package/react-native-confirmation-code-field
+
+#### 显示svg
+
+react-native-svg-uri
+
+
+
+https://www.npmjs.com/package/react-native-svg-uri
+
+svg可以在阿里矢量图标库里，选择好图标 --> 到购物车里 --> 下载素材，选择svg, --> 浏览器打开，进入调试，定位到那里，鼠标右键复制，复制到outerHtml。可以得到svg的字符串形式。
+
+#### 日期组件
+
+react-native-community/datetimepicker
+
+
+
+
 
 
 ## error
@@ -70,5 +91,21 @@ TypeError: Restricted in strict mode, js engine: hermes
 
 
 ### 需要补充
+
+##### 项目中请求有关的
+
 add
 开
+
+
+
+
+
+### rn的需要注意点
+
+遇到离谱的错误就
+
+```
+npx react-native run-android  || npm run android
+```
+
