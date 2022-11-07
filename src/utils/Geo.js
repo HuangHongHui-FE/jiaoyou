@@ -10,12 +10,12 @@ class Geo {
   async initGeo() {
     if (Platform.OS == 'android') {
       // 请求地理位置权限
-      let resPermission = await PermissionsAndroid.requestMultiple([
+      let resPermissions = await PermissionsAndroid.requestMultiple([
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
         PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
       ]);
-      this.resPermission = resPermission;
-      console.log('resPermission---', resPermission);
+      this.resPermissions = resPermissions;
+      console.log('resPermission---', resPermissions);
       await init({
         android: '1485884a043fcbd93f4dff556239ceef', // 安卓应用的key
         ios: '1485884a043fcbd93f4dff556239ceef',
@@ -34,9 +34,9 @@ class Geo {
 
   async getCityByLocation() {
     if (
-      this.resPermissions[android.permission.ACCESS_COARSE_LOCATION] !=
+      this.resPermissions['android.permission.ACCESS_COARSE_LOCATION'] !=
         'granted' ||
-      this.resPermissions[android.permission.ACCESS_FINE_LOCATION] != 'granted'
+      this.resPermissions['android.permission.ACCESS_FINE_LOCATION'] != 'granted'
     ) {
         await this.initGeo();
     }
