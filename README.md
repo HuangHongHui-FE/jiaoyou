@@ -83,6 +83,8 @@ https://www.npmjs.com/package/@react-native-community/datetimepicker
 
 react-native-amap-geolocation
 
+注意先申请（完整的）权限，再初始化，再进行使用。以及手机要开启定位服务。
+
 
 
 
@@ -100,24 +102,49 @@ TypeError: Restricted in strict mode, js engine: hermes
 解决：axios版本降级，1.X及以上的都不可以，0.27.2可以
 ```
 
+##### 
 
 
-### 需要补充
+
+## 需要补充
 
 ##### 项目中请求有关的
 
 add
 开
 
+##### 特别的写法
+
+// 注意这种写法
 
 
 
 
-### rn的需要注意点
 
-遇到离谱的错误就
+
+
+## rn的需要注意点
+
+##### 遇到离谱的错误就
 
 ```
 npx react-native run-android  || npm run android
 ```
 
+### 高德地图key-android
+
+发布版安全码SHA1:
+
+​	debug.keystore在项目下android的app下
+
+​	https://lbs.amap.com/faq/android/map-sdk/create-project/43112
+
+​	https://blog.csdn.net/yuzhiqiang_1993/article/details/79307205
+
+​	https://www.jianshu.com/p/692ca2bcbac5
+
+generate signed apk没找到：Sync project with Gradle Files”按钮消失问题：
+
+​	在android软件里打开项目的android目录
+
+​	https://www.jianshu.com/p/9e02e55f0ba8
