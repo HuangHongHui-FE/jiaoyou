@@ -260,7 +260,7 @@ class Index extends Component {
 
   render() {
     // <Dialog.Loading />
-    console.log('this---', this);
+    // console.log('this---', this);
     const {showLogin} = this.state;
     // console.log(Dimensions.get("window").height)
     return (
