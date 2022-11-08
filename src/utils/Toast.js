@@ -1,6 +1,6 @@
 import React from 'react';
 import {ActivityIndicator} from 'react-native'
-import {Toast, Theme} from 'teaset'
+// import {Toast} from 'teaset-pro'
 
 let customKey = null;
 
@@ -8,9 +8,9 @@ Toast.showLoading = (text) => {
   if (customKey) return;
   customKey = Toast.show({
     text,
-    icon: <ActivityIndicator size='large' color={Theme.toastIconTintColor} />,
+    icon: <ActivityIndicator size='large' />,
     position: 'center',
-    duration: 1000000,
+    duration: 100000,
   });
 }
 
@@ -20,5 +20,4 @@ Toast.hideLoading = () => {
   customKey = null;
 }
 
-console.log(Toast)
 export default Toast;

@@ -15,7 +15,12 @@ import validator from '../../../utils/validator';
 // ui库的用
 import {Input, Icon, Dialog} from '@rneui/themed';
 
-// import {Toast} from '../../../utils/Toast.js'
+// import Toast from '../../../utils/toast2'
+// import Toast from '../../../components/Toast';
+// import Toast from '../../../utils/toast3'
+// import Toast from '../../../utils/Toast';
+// import {Toast} from 'teaset-pro'
+
 import request from '../../../utils/request';
 import {ACCOUNT_LOGIN, ACCOUNT_VALIDATEVCODE} from '../../../utils/pathMap';
 
