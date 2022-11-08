@@ -9,7 +9,13 @@ import {maleSvg} from '../../../res/fonts/iconSvg';
 // 日期组件
 import DateTimePicker from '@react-native-community/datetimepicker';
 
+import Geo from '../../../utils/Geo';
+
 import {Input} from '@rneui/base';
+
+// import Picker from 'react-native-picker';
+import THButton from '../../../components/THButton';
+import CityJson from '../../../res/citys.json';
 export default class Index extends Component {
   state = {
     // 用户信息
@@ -27,9 +33,20 @@ export default class Index extends Component {
     showDateTimePicker: false,
   };
 
+  async componentDidMount() {
+    let res = await Geo.getCityByLocation();
+    console.log('GeoRes--->', res);
+    const address = res.regeocode.formatted_address;
+    const city = res.regeocode.addressComponent.city.replace('市', '');
+    this.setState({
+      address,
+      city,
+    });
+  }
+
   // 日期改变事件
   handleDateChange(event, date) {
-    console.log(event, date)
+    console.log(event, date);
     //这是设置日期,即确认按钮
     if (event.type == 'set') {
       const birthday = this.dateToString(date);
@@ -40,15 +57,45 @@ export default class Index extends Component {
     }
   }
 
-  // chooseDate
+  chooseGender(gender){
+    this.setState({
+      gender
+    })
+  }
+
+  // 点击选择生日
   chooseDate() {
-    console.log('aaa')
     this.setState({
       showDateTimePicker: true,
     });
   }
 
-  dateToString(date){
+  // 展示城市选择框
+  showCityPiker() {
+    console.log('选择城市')
+    // Picker.init({
+    //   pickerData: CityJson,
+    //   selectedValue: ['北京', '北京'],
+    //   wheelFlex: [1, 1, 0],
+    //   pickerConfirmBtnText: '确定',
+    //   pickerCancelBtnText: '取消',
+    //   pickerTitleText: '选择城市',
+    //   onPickerConfirm: data => {
+    //     console.log(data);
+    //     this.setState({
+    //       city: data[1]
+    //     })
+    //   },
+    //   onPickerCancel: data => {
+    //     console.log(data);
+    //   },
+    //   onPickerSelect: data => {
+    //     console.log(data);
+    //   },
+    // });
+  }
+
+  dateToString(date) {
     var year = date.getFullYear();
     var month = (date.getMonth() + 1).toString();
     var day = date.getDate().toString();
@@ -60,11 +107,16 @@ export default class Index extends Component {
     }
     var dateTime = year + '-' + month + '-' + day;
     return dateTime;
-  };
+  }
 
-  chooseGender(gender) {}
+  // 点击设置头像
+  chooseHeadImg(){
+
+  }
+
   render() {
-    const {gender, nickname, date, birthday, showDateTimePicker} = this.state;
+    const {gender, nickname, date, birthday, showDateTimePicker, city} =
+      this.state;
 
     return (
       <View style={{backgroundColor: '#fff', flex: 1, padding: pxToDp(20)}}>
@@ -122,9 +174,12 @@ export default class Index extends Component {
 
         {/* 日期 */}
         <View>
-          <View style={{}}>
+          <View>
             {/*  onFocus={() => this.chooseDate()}   */}
-            <Input placeholder='设置生日' value={birthday} onTouchStart={() => this.chooseDate()}></Input>
+            {/* <TouchableOpacity onPress={() => this.chooseDate()}>
+              <Input placeholder="设置生日" value={birthday}></Input>
+            </TouchableOpacity> */}
+            <Input placeholder="设置生日" value={birthday} onTouchStart={() => this.chooseDate()}></Input>
           </View>
           {showDateTimePicker && (
             <DateTimePicker
@@ -138,6 +193,23 @@ export default class Index extends Component {
             />
           )}
         </View>
+        {/* 地址定位 */}
+        <TouchableOpacity onPress={() => this.showCityPiker()}>
+          <Input
+            value={'当前定位:' + city}
+            inputStyle={{color: '#666'}}></Input>
+        </TouchableOpacity>
+
+        {/* 头像 */}
+        <THButton
+          onPress={() => this.chooseHeadImg()}
+          style={{
+            height: pxToDp(40),
+            borderRadius: pxToDp(20),
+            alignSelf: 'center',
+          }}>
+          选择头像
+        </THButton>
       </View>
     );
   }

@@ -85,11 +85,15 @@ react-native-amap-geolocation
 
 注意先申请（完整的）权限，再初始化，再进行使用。以及手机要开启定位服务。
 
+#### 城市选择
 
+react-native-picker
 
+编译不成功看这个：
 
+https://blog.csdn.net/The_Small_White/article/details/103682530
 
-
+https://www.cnblogs.com/blog-zy/p/9674718.html
 
 
 
