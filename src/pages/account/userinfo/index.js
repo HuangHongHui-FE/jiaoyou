@@ -16,6 +16,8 @@ import {Input} from '@rneui/base';
 // import Picker from 'react-native-picker';
 import THButton from '../../../components/THButton';
 import CityJson from '../../../res/citys.json';
+
+import ImagePicker from 'react-native-image-crop-picker';
 export default class Index extends Component {
   state = {
     // 用户信息
@@ -57,10 +59,11 @@ export default class Index extends Component {
     }
   }
 
-  chooseGender(gender){
+  // 点击矢量图
+  chooseGender(gender) {
     this.setState({
-      gender
-    })
+      gender,
+    });
   }
 
   // 点击选择生日
@@ -72,7 +75,7 @@ export default class Index extends Component {
 
   // 展示城市选择框
   showCityPiker() {
-    console.log('选择城市')
+    console.log('选择城市');
     // Picker.init({
     //   pickerData: CityJson,
     //   selectedValue: ['北京', '北京'],
@@ -110,8 +113,19 @@ export default class Index extends Component {
   }
 
   // 点击设置头像
-  chooseHeadImg(){
-
+  chooseHeadImg() {
+    const {nickname, city, birthday} = this.state;
+    if (!nickname || !city || !birthday) {
+      console.log('不合法'); //
+      return;
+    }
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+    });
   }
 
   render() {
@@ -179,7 +193,10 @@ export default class Index extends Component {
             {/* <TouchableOpacity onPress={() => this.chooseDate()}>
               <Input placeholder="设置生日" value={birthday}></Input>
             </TouchableOpacity> */}
-            <Input placeholder="设置生日" value={birthday} onTouchStart={() => this.chooseDate()}></Input>
+            <Input
+              placeholder="设置生日"
+              value={birthday}
+              onTouchStart={() => this.chooseDate()}></Input>
           </View>
           {showDateTimePicker && (
             <DateTimePicker

@@ -13,6 +13,12 @@ npm root -g
 debug可以看见浏览器输出
 
 
+
+
+
+npm run start 启动metro
+
+
 ### 项目创建
 
 ```js
@@ -95,7 +101,11 @@ https://blog.csdn.net/The_Small_White/article/details/103682530
 
 https://www.cnblogs.com/blog-zy/p/9674718.html
 
+#### 图片剪切
 
+react-native-image-crop-picker
+
+https://www.npmjs.com/package/react-native-image-crop-picker
 
 
 
