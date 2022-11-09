@@ -20,6 +20,8 @@ import CityJson from '../../../res/citys.json';
 import ImagePicker from 'react-native-image-crop-picker';
 
 import {inject, observer} from 'mobx-react';
+import request from '../../../utils/request';
+import { ACCOUNT_CHECKHEADIMAGE } from '../../../utils/pathMap';
 
 @inject('RootStore')
 @observer
@@ -129,8 +131,43 @@ class Index extends Component {
       width: 300,
       height: 400,
       cropping: true,
-    }).then(image => {
-      console.log(image);
+    }).then(async image => {
+      console.log('userinfi---image----', image);
+
+      let formData = new FormData();
+      formData.append("headPhoto", {
+        // 本地圖片地址
+        uri: image.path,
+        type: image.mime,
+        name: image.path.split('').pop()
+      });
+      // 头像上传
+      // !!!!停止debug模式
+      const res0 = await request.post(ACCOUNT_CHECKHEADIMAGE, formData, {
+        header: {
+          "Content-Type": 'multipart/form-data',
+          "Authorization": `Bearer ${this.props.RootStore.token}`
+        }
+      })
+
+      console.log(res0);
+      // {
+      //   code: '10000', 
+      //   data: {
+      //     headImgPath: "/upload/15915912346.jpg",
+      //     headImgShortPath: "/upload/15915912346.jpg",
+      //     isPass: true
+      //   },
+      //   msg: "上传成功"
+      // }
+
+
+      
+
+
+
+
+
     });
   }
 
