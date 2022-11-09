@@ -146,7 +146,9 @@ class Index extends Component {
       const res0 = await request.post(ACCOUNT_CHECKHEADIMAGE, formData, {
         header: {
           "Content-Type": 'multipart/form-data',
-          "Authorization": `Bearer ${this.props.RootStore.token}`
+
+          // token不用每次都加了
+          // "Authorization": `Bearer ${this.props.RootStore.token}`
         }
       })
 
@@ -161,12 +163,11 @@ class Index extends Component {
       //   msg: "上传成功"
       // }
 
+      if(res0.code == '10000'){
 
-      
+      }else{
 
-
-
-
+      }
 
     });
   }
