@@ -147,6 +147,13 @@ TypeError: Restricted in strict mode, js engine: hermes
 
 ##### 
 
+```
+react-native-tab-navigator
+
+ViewPropTypes has been removed from React Native
+没解决：https://github.com/facebook/react-native/issues/33557
+```
+
 
 
 ## 需要补充
@@ -191,3 +198,10 @@ generate signed apk没找到：Sync project with Gradle Files”按钮消失问�
 ​	在android软件里打开项目的android目录
 
 ​	https://www.jianshu.com/p/9e02e55f0ba8
+
+
+
+## 优化相关
+
+小图片替换成SVG
+
