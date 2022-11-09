@@ -18,7 +18,12 @@ import THButton from '../../../components/THButton';
 import CityJson from '../../../res/citys.json';
 
 import ImagePicker from 'react-native-image-crop-picker';
-export default class Index extends Component {
+
+import {inject, observer} from 'mobx-react';
+
+@inject('RootStore')
+@observer
+class Index extends Component {
   state = {
     // 用户信息
     nickname: '张山',
@@ -36,6 +41,7 @@ export default class Index extends Component {
   };
 
   async componentDidMount() {
+    console.log('userinfo----', this.props);
     let res = await Geo.getCityByLocation();
     console.log('GeoRes--->', res);
     const address = res.regeocode.formatted_address;
@@ -231,3 +237,5 @@ export default class Index extends Component {
     );
   }
 }
+
+export default Index;

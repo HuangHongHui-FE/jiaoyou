@@ -29,6 +29,10 @@ import THButton from '../../../components/THButton';
 // 验证码输入组件
 import Vcode from '../../../components/Vcode';
 
+import {inject, observer} from 'mobx-react';
+
+@inject('RootStore')
+@observer
 class Index extends Component {
   constructor() {
     super();
@@ -113,12 +117,17 @@ class Index extends Component {
       code: '10000',
       data: {
         isNew: true,
+        token: 'woshitoken',
+        id: '2222'
       },
     };
 
     if (res.code != '10000') {
       return;
     }
+
+    // 存储用户信息到mobx
+    this.props.RootStore.setUserInfo(phoneNumber, res.data.token, res.data.id);
 
     // 新用户
     if (res.data.isNew) {

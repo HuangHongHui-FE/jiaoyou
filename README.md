@@ -107,6 +107,35 @@ react-native-image-crop-picker
 
 https://www.npmjs.com/package/react-native-image-crop-picker
 
+#### mobx引入
+
+https://mobx.js.org/installation.html
+
+```
+yarn add mobx mobx-react @babel/plugin-proposal-class-properties 
+
+在babael.config.js里
+{
+    // Babel < 7.13.0
+    "plugins": [["@babel/plugin-proposal-class-properties", { "loose": false }]],
+    
+    // Babel >= 7.13.0 (https://babeljs.io/docs/en/assumptions)
+    "plugins": [["@babel/plugin-proposal-class-properties"]],
+    "assumptions": {
+        "setPublicClassFields": false
+    }
+}
+
+@babel/plugin-proposal-decorators     来解析@这种js代码
+['@babel/plugin-proposal-decorators', {legacy: true}],
+```
+
+
+
+
+
+
+
 
 
 
