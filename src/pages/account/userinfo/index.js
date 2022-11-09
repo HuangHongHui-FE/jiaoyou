@@ -21,7 +21,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 import {inject, observer} from 'mobx-react';
 import request from '../../../utils/request';
-import { ACCOUNT_CHECKHEADIMAGE } from '../../../utils/pathMap';
+import {ACCOUNT_CHECKHEADIMAGE, ACCOUNT_BEGINFO} from '../../../utils/pathMap';
 
 @inject('RootStore')
 @observer
@@ -48,10 +48,11 @@ class Index extends Component {
     console.log('GeoRes--->', res);
     const address = res.regeocode.formatted_address;
     const city = res.regeocode.addressComponent.city.replace('市', '');
-    this.setState({
-      address,
-      city,
-    });
+    const lng =
+      res.regeocode.addressComponent.streetNumber.location.split(',')[0];
+    const lat =
+      res.regeocode.addressComponent.streetNumber.location.split(',')[1];
+    this.setState({address, city, lng, lat});
   }
 
   // 日期改变事件
@@ -135,26 +136,26 @@ class Index extends Component {
       console.log('userinfi---image----', image);
 
       let formData = new FormData();
-      formData.append("headPhoto", {
+      formData.append('headPhoto', {
         // 本地圖片地址
         uri: image.path,
         type: image.mime,
-        name: image.path.split('').pop()
+        name: image.path.split('').pop(),
       });
       // 头像上传
       // !!!!停止debug模式
       const res0 = await request.post(ACCOUNT_CHECKHEADIMAGE, formData, {
         header: {
-          "Content-Type": 'multipart/form-data',
+          'Content-Type': 'multipart/form-data',
 
           // token不用每次都加了
           // "Authorization": `Bearer ${this.props.RootStore.token}`
-        }
-      })
+        },
+      });
 
       console.log(res0);
       // {
-      //   code: '10000', 
+      //   code: '10000',
       //   data: {
       //     headImgPath: "/upload/15915912346.jpg",
       //     headImgShortPath: "/upload/15915912346.jpg",
@@ -163,12 +164,17 @@ class Index extends Component {
       //   msg: "上传成功"
       // }
 
-      if(res0.code == '10000'){
-
-      }else{
-
+      if (res0.code !== '10000') {
+        return;
       }
 
+      // 构造参数，完成个人信息
+      let params = this.state;
+      params.header = res[0].data.headImgPath;
+      console.log('userinfo---params', params);
+
+      const res1 = await request.privatePost(ACCOUNT_BEGINFO, params);
+      console.log(res1);
     });
   }
 

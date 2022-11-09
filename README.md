@@ -130,7 +130,7 @@ yarn add mobx mobx-react @babel/plugin-proposal-class-properties
 ['@babel/plugin-proposal-decorators', {legacy: true}],
 ```
 
-
+#### 头像上传
 
 
 
